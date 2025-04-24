@@ -7,12 +7,21 @@ st.set_page_config(page_title="Churn Predictor")
 st.title("💼 Bank Customer Churn Predictor")
 
 # Load model and scaler
+# Load model and scaler safely
+import os
+
 try:
-    model = pickle.load(open("xgb_model.pkl", "rb"))  # <-- this must be the model file
-    scaler = pickle.load(open("scaler.pkl", "rb"))    # <-- this is your scaler
+    with open(os.path.join(os.path.dirname(__file__), "xgb_model.pkl"), "rb") as f:
+        model = pickle.load(f)
+    with open(os.path.join(os.path.dirname(__file__), "scaler.pkl"), "rb") as f:
+        scaler = pickle.load(f)
 except FileNotFoundError:
-    st.error("❌ Model or scaler file not found.")
+    st.error("❌ Model or scaler file not found. Please make sure 'xgb_model.pkl' and 'scaler.pkl' are in the same directory as app.py.")
     st.stop()
+except Exception as e:
+    st.error(f"⚠️ Unexpected error loading model/scaler: {e}")
+    st.stop()
+
 
 
 # Form for user input
