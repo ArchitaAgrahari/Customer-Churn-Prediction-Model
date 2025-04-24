@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
+import os
 
 # Set up Streamlit
 st.set_page_config(page_title="Churn Predictor")
@@ -8,7 +9,6 @@ st.title("💼 Bank Customer Churn Predictor")
 
 # Load model and scaler
 # Load model and scaler safely
-import os
 
 try:
     with open(os.path.join(os.path.dirname(__file__), "xgb_model.pkl"), "rb") as f:
