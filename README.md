@@ -66,5 +66,9 @@ Customer churn is a major challenge in the banking industry. This project aims t
 - XGBoost outperforms other models across most metrics.
 
 ---
+## 🌐 Live App
+
+You can try the deployed churn prediction app here:  
+👉 [Live Demo](https://architaagrahari-customer-churn-prediction-model-app-anqjn9.streamlit.app/)
 
 
